@@ -1,9 +1,16 @@
+# syntax=docker/dockerfile:1
+# check=skip=SecretsUsedInArgOrEnv
+
 # Stage 1: Build the app
 FROM node:20-alpine AS build
+ARG VITE_GITHUB_ACCESS_TOKEN
+
 WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+ENV VITE_GITHUB_ACCESS_TOKEN=${VITE_GITHUB_ACCESS_TOKEN}
 RUN npm run build
 
 # Stage 2: Setup the Nginx Server to serve the app

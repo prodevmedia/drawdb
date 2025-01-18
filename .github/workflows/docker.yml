@@ -35,4 +35,6 @@ jobs:
         push: true
         tags: ghcr.io/${{ github.repository }}:latest,ghcr.io/${{ github.repository }}:${{ github.ref_name }}
         platforms: linux/amd64,linux/arm64
+        build-args: |
+            VITE_GITHUB_ACCESS_TOKEN=${{ vars.VITE_GITHUB_ACCESS_TOKEN }}
 
