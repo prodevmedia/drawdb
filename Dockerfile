@@ -10,6 +10,7 @@ COPY package*.json ./
 RUN npm ci
 COPY . .
 
+# 
 ENV VITE_GITHUB_ACCESS_TOKEN=${VITE_GITHUB_ACCESS_TOKEN}
 RUN npm run build
 
